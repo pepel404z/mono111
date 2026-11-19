@@ -1,0 +1,45 @@
+# Описание Xcode-проекта для XcodeGen (https://github.com/yonaskolb/XcodeGen).
+# MONO.xcodeproj создаётся из этого файла командой `xcodegen generate`
+# (сборка на GitHub делает это сама).
+name: MONO
+options:
+  bundleIdPrefix: com.anvar
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  MONO:
+    type: application
+    platform: iOS
+    sources:
+      - path: MONO
+      - path: Web
+        type: folder # копируется в приложение как папка Web
+    settings:
+      base:
+        PRODUCT_NAME: MONO
+        PRODUCT_BUNDLE_IDENTIFIER: com.anvar.mono
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_STYLE: Automatic
+    info:
+      path: MONO/Info.plist
+      properties:
+        CFBundleDisplayName: MONO
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSRequiresIPhoneOS: true
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+        UIRequiresFullScreen: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UIStatusBarStyle: UIStatusBarStyleLightContent
+        UIViewControllerBasedStatusBarAppearance: true
+        UIUserInterfaceStyle: Dark
+        ITSAppUsesNonExemptEncryption: false
+    scheme: {}
